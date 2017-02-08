@@ -1,0 +1,32 @@
+# Server settings
+server:
+  address: localhost
+  port: 8080
+
+
+# SPRING PROFILES
+spring:
+    # HTTP ENCODING
+    http:
+        encoding.charset: UTF-8
+        encoding.enable: true
+        encoding.force: true
+    profiles:
+      active: production
+    datasource:
+      url: jdbc:mysql://192.168.156.122:3306/demo?useUnicode=true&characterEncoding=utf-8
+      username: root
+      password: root
+      driver-class-name: com.alibaba.druid.proxy.DruidDriver
+    session:
+      store-type: none
+    thymeleaf:
+      cache: false
+      prefix: classpath:/templates/
+      suffix: .html
+      mode: HTML5
+      encoding: UTF-8
+      content-type: text/html
+
+    resources:
+      static-locations: /static/
