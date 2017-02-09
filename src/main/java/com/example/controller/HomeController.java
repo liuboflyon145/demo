@@ -73,7 +73,7 @@ public class HomeController {
             return "register";
         }
         model.addAttribute("user", user);
-        log.info("用户注册成功,{}", JSONUtils.toJSONString(user));
+//        log.info("用户注册成功,{}", JSONUtils.toJSONString(user));
         return "redirect:index";
     }
 
