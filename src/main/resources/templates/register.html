@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <title>用户注册</title>
+
+    <link rel="stylesheet" th:href="@{/css/reg.css}" type="text/css"/>
+
+</head>
+<body>
+
+<div id="container">
+
+    <br/><br/><br/>
+
+    <div class="label">用户注册</div>
+
+    <br/><br/>
+
+    <div id="tw-outer">
+
+        <div id="tw">
+
+            <form th:action="@{/register}" th:object="${user}" method="post">
+
+                <div id='name' class='outerDiv'>
+
+                    <label for="name">用户名:</label>
+
+                    <input type="text" th:field="*{userName}" required="required"/>
+
+                    <div class='message' id='nameDiv'> 3到8位长度</div>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+                <div id='username' class='outerDiv'>
+
+                    <label for="phone">手机号:</label>
+
+                    <input type="text" th:field="*{phone}" required="required"/>
+
+                    <div class='message' id='phone'> 真实手机号</div>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+                <div id='password' class='outerDiv'>
+
+                    <label for="password">密码:</label>
+
+                    <input type="password" th:field="*{password}" required="required"/>
+
+                    <div class='message' id='websiteDiv'> 6到12位长度</div>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+                <div id='email' class='outerDiv'>
+
+                    <label for="email">Email:</label>
+
+                    <input type="email" th:field="*{email}" required="required"/>
+
+                    <div class='message' id='emailDiv'> 格式：123@qq.com</div>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+                <div id='sex' class='outerDiv'>
+
+                    <label for="sex">性别:</label>
+
+                    <select name="sex">
+                        <option value="">选择性别</option>
+                        <option th:value="male">男</option>
+                        <option th:value="female">女</option>
+                    </select>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+                <div id='submit' class='outerDiv'>
+
+                    <input type="submit" value="注册帐号"/>
+
+                </div>
+
+                <div class='clearfix'></div>
+
+            </form>
+
+            <div class="clearfix"></div>
+
+        </div>
+
+    </div>
+
+    <br/>
+
+    <div id="warning" style="margin-top: 20px; color: rgb(85, 85, 85); text-align: center; font-size: 14px;">
+    </div>
+</div>
+
+</body>
+
+</html>

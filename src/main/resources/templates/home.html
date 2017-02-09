@@ -2,11 +2,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Hello World!</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap-3.3.6/dist/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/sigin.css}"/>
+    <script type="text/javascript" th:href="@{/js/bootstrap.min.js}"/>
+    <title>用户管理系统</title>
 </head>
 <body>
-<h1 th:inline="text">Hello.v.2</h1>
-<p th:text="${hello}"></p>
-hello world
+<div class="container">
+    <form class="form-signin" th:action="@{/login}" method="post">
+        <h2 class="form-signin-heading" th:style="center">用户登录</h2>
+        <label for="phone" class="sr-only">手机号</label>
+        <input type="tel" th:name="phone" id="phone" class="form-control" placeholder="手机号" required="true" autofocus=""/>
+        <label for="password" class="sr-only">密码</label>
+        <input type="password" th:name="password" id="password" class="form-control" placeholder="密码" required="true"/>
+        <div class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"/> 记住密码
+            </label>
+            <a th:href="@{/register}">注册</a>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+    </form>
+
+</div>
 </body>
 </html>

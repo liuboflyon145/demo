@@ -1,7 +1,7 @@
 # Server settings
 server:
   address: localhost
-  port: 8080
+  port: 3000
 
 
 # SPRING PROFILES
@@ -14,10 +14,11 @@ spring:
     profiles:
       active: production
     datasource:
-      url: jdbc:mysql://192.168.156.122:3306/demo?useUnicode=true&characterEncoding=utf-8
+      url: jdbc:mysql://192.168.156.122:3306/demo?characterEncoding=utf-8
       username: root
       password: root
-      driver-class-name: com.alibaba.druid.proxy.DruidDriver
+      driver-class-name: com.mysql.jdbc.Driver
+
     session:
       store-type: none
     thymeleaf:
@@ -26,7 +27,3 @@ spring:
       suffix: .html
       mode: HTML5
       encoding: UTF-8
-      content-type: text/html
-
-    resources:
-      static-locations: /static/
