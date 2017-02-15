@@ -3,6 +3,7 @@ buildscript {
         springBootVersion = '1.5.1.RELEASE'
     }
     repositories {
+        maven { url 'http://repo.spring.io/plugins-release' }
         jcenter()
     }
     dependencies {
