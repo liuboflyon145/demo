@@ -1,19 +1,17 @@
 package com.example.controller;
 
 
-import com.alibaba.druid.support.json.JSONParser;
-import com.alibaba.druid.support.json.JSONUtils;
 import com.alibaba.druid.util.StringUtils;
 import com.example.domain.User;
 import com.example.service.UserService;
 import com.example.tools.CommonUtils;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created by liubo16 on 2017/2/8.
@@ -73,7 +71,6 @@ public class HomeController {
             return "register";
         }
         model.addAttribute("user", user);
-//        log.info("用户注册成功,{}", JSONUtils.toJSONString(user));
         return "redirect:index";
     }
 
