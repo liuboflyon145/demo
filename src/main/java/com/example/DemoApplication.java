@@ -4,30 +4,39 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
+
+
+import java.util.concurrent.CountDownLatch;
 
 @Configuration
 @ComponentScan
 @MapperScan(basePackages = {"com.example.mapper"})
 @EnableAutoConfiguration
 @SpringBootApplication
+@ImportResource({"classpath:provider.xml"})
 public class DemoApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+
+    @Bean
+    public CountDownLatch closeLatch() {
+        return new CountDownLatch(1);
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+//        ApplicationContext ctx = SpringApplication.run(DemoApplication.class, args);
+        ApplicationContext ctx = new SpringApplicationBuilder().sources(DemoApplication.class)
+                .web(false)
+                .run(args);
+//        logger.info("项目启动成功");
+        CountDownLatch countDownLatch = (CountDownLatch) ctx.getBean(CountDownLatch.class.getName());
+        countDownLatch.await();
     }
 
 
-//    @Bean
-//    public EmbeddedServletContainerCustomizer containerCustomizer() {
-//        return (container -> {
-//
-//            ErrorPage error401Page = new ErrorPage(HttpStatus.UNAUTHORIZED, "/401.html");
-//            ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/templates/404.html");
-//            ErrorPage error500Page = new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500.html");
-//            ErrorPage error = new ErrorPage(HttpStatus.BAD_REQUEST,"/error.html");
-//            container.addErrorPages(error401Page, error404Page, error500Page);
-//        });
-//    }
 }
